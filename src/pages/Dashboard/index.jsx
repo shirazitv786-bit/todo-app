@@ -19,7 +19,7 @@ const Dashboard = () => {
                 <Row className='mt-5'>
                     <Col span={24} className='text-center mt-5'>
                         <Title level={3}>UID: {id}</Title>
-                        <Title level={3}>Full Name: {fullName}</Title>
+                        <Title level={3}>Name: {fullName}</Title>
                         <Title level={3}>Emaill: {email}</Title>
                         <Title level={3}>Password: {password}</Title>
                         <Title level={3}>Status: {status}</Title>
