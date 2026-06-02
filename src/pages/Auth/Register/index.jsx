@@ -1,4 +1,5 @@
 import { Button, Col, Form, Input, message, Row } from 'antd'
+import Password from 'antd/es/input/Password'
 import Paragraph from 'antd/es/typography/Paragraph'
 import Title from 'antd/es/typography/Title'
 import { useState } from 'react'
@@ -8,47 +9,42 @@ const initialState = { fullName: "", email: "", password: "", confirmPassword: "
 
 const Register = () => {
 
-    const [ state, setState ] = useState(initialState)
-    const [ isLoading, setIsLoading ] = useState(false)
+    const [state, setState] = useState(initialState)
+    const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
 
-    const handleChange = e => setState(state => ({ ...state, [e.target.name]: e.target.value }))
+    const handleChange = e => setState(s => ({ ...s, [e.target.name]: e.target.value }))
 
     const handleRegister = () => {
-
         let { fullName, email, password, confirmPassword } = state
+
         setIsLoading(true)
 
-        if (fullName === "" || email === "" || password === "" || confirmPassword === "") {
-            message.error("Please fill all fields")
-            setIsLoading(false)
-            return
-        }
-
-        if (password !== confirmPassword) {
-            message.error("Password doesn't match")
-            setIsLoading(false)
-            return
-        }
-
-        if(password.length<6){
-            message.error("Password must be 6 character long")
-            setIsLoading(false)
-            return
-        }
-
         const id = Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2)
+        const user = { fullName, email, password, id, status: "ACTIVE", createdAt: new Date().getTime() }
 
-        const user = { fullName, email, password, id, status: "ACTIVE", createdAt: new Date().getFullYear() }
+        if (fullName === "" || email === "" || password === "" || confirmPassword === "") {
+            message.error("Please field all fields")
+            setIsLoading(false)
+            return
+        }
+        if (password !== confirmPassword) {
+            message.error("Password does't matched")
+            setIsLoading(false)
+            return
+        }
+        if (password.length < 6) {
+            message.error("password length must be 6 character")
+            setIsLoading(false)
+            return
+        }
 
-        const users = JSON.parse(localStorage.getItem("Users")) || []
+        const users = JSON.parse(localStorage.getItem("users")) || []
 
         const isUser = users.find(user => user.email === email)
-
         if (isUser) {
-            message.error("Already registered")
+            message.error("Already exists")
             setIsLoading(false)
-            return
         }
 
         users.push(user)

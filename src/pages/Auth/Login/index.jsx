@@ -1,4 +1,5 @@
 import { Button, Col, Form, Input, message, Row } from 'antd'
+import Password from 'antd/es/input/Password'
 import Paragraph from 'antd/es/typography/Paragraph'
 import Title from 'antd/es/typography/Title'
 import { useState } from 'react'
@@ -12,23 +13,21 @@ const Login = () => {
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
 
-    const handleChange = e => setState(state => ({ ...state, [e.target.name]: e.target.value }))
+    const handleChange = e => setState(s => ({ ...s, [e.target.name]: e.target.value }))
 
     const handleLogin = () => {
-
         let { email, password } = state
+
         setIsLoading(true)
 
         if (email === "" || password === "") {
-            message.error("Please fill all fields")
+            message.error("Please field all fields")
             setIsLoading(false)
             return
         }
 
         const users = JSON.parse(localStorage.getItem("users")) || []
-
         const user = users.find(user => user.email === email && user.password === password)
-
         if (!user) {
             message.error("Invalid credentials")
             setIsLoading(false)
