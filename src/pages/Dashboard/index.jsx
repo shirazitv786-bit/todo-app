@@ -18,11 +18,11 @@ const Dashboard = () => {
             <main>
                 <Row className='mt-5'>
                     <Col span={24} className='text-center mt-5'>
-                        <Title level={3}>UID: {id}</Title>
-                        <Title level={3}>Name: {fullName}</Title>
-                        <Title level={3}>Emaill: {email}</Title>
-                        <Title level={3}>Password: {password}</Title>
-                        <Title level={3}>Status: {status}</Title>
+                        <Title level={3}><span className='text-primary'>UID:</span> {id}</Title>
+                        <Title level={3}><span className='text-primary'>Name:</span> {fullName}</Title>
+                        <Title level={3}><span className='text-primary'>Email:</span> {email}</Title>
+                        <Title level={3}><span className='text-primary'>Password:</span> {password}</Title>
+                        <Title level={3}><span className='text-primary'>Status:</span> <span className='text-danger'>{status}</span></Title>
                     </Col>
                 </Row>
             </main>
