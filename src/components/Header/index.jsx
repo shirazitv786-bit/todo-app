@@ -23,7 +23,7 @@ const Header = () => {
     }
     return (
         <header>
-            <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+            <nav className="navbar navbar-expand-lg bg-pri navbar-dark">
                 <div className="container">
                     <Link to="/" className="navbar-brand">Todo App</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

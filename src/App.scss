@@ -1,11 +1,17 @@
 @import "./scss/bootstrap";
 @import "./scss/auth";
 
-#root{
+#root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-main{
+
+main {
   flex: 1 0 auto;
+}
+
+.bg-pri {
+  background: #000000;
+  background: linear-gradient(150deg, rgba(0, 0, 0, 1) 17%, rgba(0, 1, 79, 1) 100%);
 }
